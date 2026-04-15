@@ -1355,3 +1355,65 @@ body{
             width: 100%;
         }
 }
+/* ===== IMPROVED NAVBAR STYLES ===== */
+
+/* Default navbar - transparent at top */
+#mainNavbar {
+  background-color: transparent;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  padding: 15px 0;
+}
+
+/* Navbar becomes solid dark when scrolled */
+#mainNavbar.scrolled {
+  background-color: #1a1a2e;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+  padding: 8px 0;
+}
+
+/* Brand name text */
+.brand-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  margin-left: 8px;
+  letter-spacing: 1px;
+}
+
+/* Nav links */
+#mainNavbar .nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 8px 14px !important;
+  margin: 0 2px;
+  border-radius: 4px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Underline hover effect */
+#mainNavbar .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 14px;
+  width: 0;
+  height: 2px;
+  background-color: #00d4ff;
+  transition: width 0.3s ease;
+}
+
+#mainNavbar .nav-link:hover::after,
+#mainNavbar .nav-link.active::after {
+  width: calc(100% - 28px);
+}
+
+#mainNavbar .nav-link:hover {
+  color: #00d4ff !important;
+}
+
+/* Active link */
+#mainNavbar .nav-link.active {
+  color: #00d4ff !important;
+}
