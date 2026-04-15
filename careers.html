@@ -48,39 +48,54 @@
     <div class="career">
         <div class="career-form">
             <form action="./careers.php" method="POST" enctype="multipart/form-data">
-                <input type="text" name="name" placeholder="Name" class="career-form-txt" required>
-                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required placeholder="Contact number" maxlength="10" class="career-form-phone">
-                <input type="email" name="email" placeholder="Email" class="career-form-email" required>
+                <div class="float-label-wrapper">
+                    <input type="text" id="name" name="name" placeholder=" " class="career-form-txt" required>
+                    <label for="name">Name</label>
+                </div>
+                <div class="float-label-wrapper">
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required placeholder=" " maxlength="10" class="career-form-phone">
+                    <label for="phone">Contact Number</label>
+                </div>
+                <div class="float-label-wrapper">
+                    <input type="email" id="email" name="email" placeholder=" " class="career-form-email" required>
+                    <label for="email">Email</label>
+                </div>
                 <div class="radio-class">
                     <h2 class="name">Apply For Which Post?</h2>
-                <label class="radio">
+                <label class="radio" id="label-web-designer">
                   <input class="radio-one" type="radio" checked="checked" name="status" value="Web Designer">
                   <span class="checkmark"></span>
                   Web Designer
                 </label>
-                <label class="radio">
+                <label class="radio" id="label-web-developer">
                   <input class="radio-two" type="radio" name="status" value="Web Developer">
                   <span class="checkmark"></span>
                   Web Developer
                 </label>
-                <label class="radio">
+                <label class="radio" id="label-app-designer">
                   <input class="radio-three" type="radio" name="status" value="Mobile App Designer">
                   <span class="checkmark"></span>
                   Mobile App Designer
                 </label>
-                <label class="radio">
+                <label class="radio" id="label-app-developer">
                     <input class="radio-four" type="radio" name="status" value="Mobile App Developer">
                     <span class="checkmark"></span>
                     Mobile App Developer
-                  </label>
-                <label class="radio">
-                  <input class="radio-five" type="radio"  name="status" value="Digital Marketer">
+                </label>
+                <label class="radio" id="label-marketer">
+                  <input class="radio-five" type="radio" name="status" value="Digital Marketer">
                   <span class="checkmark"></span>
                   Digital Marketer
                 </label>
                 </div>
-                <input type="number" id="experience" name="experience" required placeholder="Years of Experience" class="career-form-experience">
-                <textarea placeholder="Other Details" name="details" class="career-form-txtarea" required></textarea>
+                <div class="float-label-wrapper">
+                    <input type="number" id="experience" name="experience" required placeholder=" " class="career-form-experience">
+                    <label for="experience">Years of Experience</label>
+                </div>
+                <div class="float-label-wrapper textarea-wrapper">
+                    <textarea id="details" placeholder=" " name="details" class="career-form-txtarea" required></textarea>
+                    <label for="details">Other Details</label>
+                </div>
                 <div class="file">
                     <h2 class="name">Upload Your Resume</h2>
                     <input class="upload" type="file" name="fileToUpload" accept=".doc,.docx,.pdf"><br><br><br>
@@ -158,6 +173,54 @@
     </div>
 
     <a href="#" class="back-to-top"><i class="ion-ios-arrow-up"></i></a>
+
+    <script>
+      // Radio accordion — hides other options when one is selected
+      const radios = document.querySelectorAll('.radio-class input[type="radio"]');
+      const radioLabels = document.querySelectorAll('.radio-class .radio');
+      const radioContainer = document.querySelector('.radio-class');
+
+      function updateRadioVisibility() {
+        const checkedRadio = document.querySelector('.radio-class input[type="radio"]:checked');
+        if (checkedRadio) {
+          radioContainer.classList.add('has-selection');
+          radioLabels.forEach(label => {
+            const input = label.querySelector('input[type="radio"]');
+            if (input.checked) {
+              label.classList.add('selected');
+              label.classList.remove('hidden');
+            } else {
+              label.classList.remove('selected');
+              label.classList.add('hidden');
+            }
+          });
+        } else {
+          radioContainer.classList.remove('has-selection');
+          radioLabels.forEach(label => {
+            label.classList.remove('selected', 'hidden');
+          });
+        }
+      }
+
+      radios.forEach(radio => {
+        radio.addEventListener('change', updateRadioVisibility);
+      });
+
+      // Allow clicking the selected label again to deselect and show all
+      radioLabels.forEach(label => {
+        label.addEventListener('click', function() {
+          const input = this.querySelector('input[type="radio"]');
+          if (input.checked && radioContainer.classList.contains('has-selection')) {
+            input.checked = false;
+            radioContainer.classList.remove('has-selection');
+            radioLabels.forEach(l => l.classList.remove('selected', 'hidden'));
+          }
+        });
+      });
+
+      // Run on load since Web Designer is pre-checked
+      updateRadioVisibility();
+    </script>
 
     <script src="lib/jquery/jquery.min.js"></script>
     <script src="lib/jquery/jquery-migrate.min.js"></script>
