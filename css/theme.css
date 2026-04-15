@@ -1,0 +1,239 @@
+/* Theme Variables */
+:root {
+    /* Light Mode */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f2f2f2;
+    --bg-tertiary: #e8e8e8;
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --text-light: #666666;
+    --color-primary: #002e5f;
+    --color-accent: #00bfff;
+    --border-color: #002e5f;
+    --header-bg: transparent;
+    --header-text: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --input-bg: #ffffff;
+    --input-border: #cccccc;
+    --button-hover-bg: #002e5f;
+}
+
+[data-theme="dark"] {
+    /* Dark Mode */
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-tertiary: #3d3d3d;
+    --text-primary: #ffffff;
+    --text-secondary: #e0e0e0;
+    --text-light: #b0b0b0;
+    --color-primary: #002e5f;
+    --color-accent: #00bfff;
+    --border-color: #00bfff;
+    --header-bg: #1a1a1a;
+    --header-text: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --input-bg: #2d2d2d;
+    --input-border: #444444;
+    --button-hover-bg: #00bfff;
+}
+
+/* Apply Theme Variables to Elements */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.header {
+    background: var(--header-bg) !important;
+    color: var(--header-text);
+}
+
+.header .navbar ul li a {
+    color: var(--header-text);
+}
+
+.header .navbar ul li a:hover {
+    color: var(--color-accent);
+}
+
+.heading, .clients .section-header h2, .section-head h1, .testimonials .section-header h2, .section-head-1 h4 {
+    color: var(--color-primary);
+}
+
+.heading::before, .heading::after, .clients .section-header h2::before, .clients .section-header h2::after, .section-head h1::before, .section-head h1::after, .testimonials .section-header h2::before, .testimonials .section-header h2::after, .section-head-1 h4::before, .section-head-1 h4::after {
+    border-top: .4rem solid var(--color-primary);
+    border-left: .4rem solid var(--color-primary);
+}
+
+.faq .heading::before, .faq .heading::after {
+    border-top: .4rem solid var(--color-accent);
+    border-left: .4rem solid var(--color-accent);
+}
+
+.row .btn {
+    background: var(--bg-primary);
+    border-color: var(--color-primary);
+    color: var(--text-primary);
+}
+
+.row .btn:hover {
+    color: white;
+    background: var(--color-primary);
+}
+
+.communicate .btn {
+    background: var(--bg-primary);
+    border-color: var(--color-primary);
+    color: var(--text-primary);
+}
+
+.communicate .btn:hover {
+    color: white;
+    background: var(--color-accent);
+}
+
+.about, .counters, .skill, .testimonials, .team, .communicate, .faq, .footer {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.about h3, .communicate h1, .faq h2 {
+    color: var(--color-primary);
+}
+
+.about p, .communicate p {
+    color: var(--text-secondary);
+}
+
+.item {
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    border: 1px solid var(--bg-tertiary);
+}
+
+.item:hover {
+    background-color: var(--bg-tertiary);
+    box-shadow: 0 .2rem .5rem var(--shadow-color);
+}
+
+.counter h3 {
+    color: var(--text-primary);
+}
+
+.skill h3, .testimonials h3, .team h3, .team .box-content p {
+    color: var(--text-secondary);
+}
+
+.skills-bar {
+    background-color: var(--bg-tertiary);
+}
+
+.skills-bar span {
+    background: linear-gradient(to right, #002e5f, #00bfff);
+}
+
+.testimonial-card {
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    border: 1px solid var(--bg-tertiary);
+}
+
+.testimonial-card .testimonial-text {
+    color: var(--text-light);
+}
+
+.team .box {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--bg-tertiary);
+}
+
+.team .box-content {
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
+}
+
+input, textarea, select {
+    background-color: var(--input-bg) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--input-border) !important;
+}
+
+input::placeholder, textarea::placeholder {
+    color: var(--text-light);
+}
+
+.footer {
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    border-top: 1px solid var(--bg-tertiary);
+}
+
+.footer a {
+    color: var(--color-accent);
+}
+
+.footer a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+/* Smooth Transition */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Overrides for inline styles and specific sections */
+.pt-5.pb-5 {
+    background-color: var(--bg-secondary) !important;
+}
+
+.copyright {
+    color: var(--text-primary) !important;
+}
+
+[style*="color: #00bfff"] {
+    color: var(--color-accent) !important;
+}
+
+[style*="color: #fff"] {
+    color: var(--text-primary) !important;
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 99;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: background 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: var(--color-accent);
+}
+
+.theme-toggle i {
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .theme-toggle {
+        top: 70px;
+        right: 70px;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+}
